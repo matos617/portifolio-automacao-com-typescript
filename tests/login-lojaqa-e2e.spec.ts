@@ -29,6 +29,27 @@ test.describe("Ato 1 - Validar carregamento e visibilidade de elementos", () => 
     });
 });
 
+test.describe("Ato 2 - Caminho Feliz", () =>{
+    test("Validar acesso e redicionar ao painel", async({page}) =>{
+
+        // Navegar até página de login
+        await page.goto(`${BASE_URL}/login.html`);
+
+        // Preencher campos utilizando o fill()
+        await page.fill("#email","admin@system.com");
+        await page.fill("#password","AdminPassword123");
+        
+        // Verificar botão ativo
+        await expect(page.locator("#loginBtn")).toBeEnabled();
+
+        // Ação de click no botão de login
+        await page.click("#loginBtn");
+
+        // Validar redirecionamento para a página /painel
+        await expect(page).toHaveURL(`${BASE_URL}/painel.html`);
+    });
+});
+
 /*
 yarn playwright test ./tests/login-lojaqa-e2e.spec.ts --headed
 
