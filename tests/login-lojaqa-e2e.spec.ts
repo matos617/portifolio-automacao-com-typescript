@@ -28,3 +28,10 @@ test.describe("Ato 1 - Validar carregamento e visibilidade de elementos", () => 
 
     });
 });
+
+/*
+yarn playwright test ./tests/login-lojaqa-e2e.spec.ts --headed
+
+yarn playwright test ./tests/login-lojaqa-e2e.spec.ts --headed --reporter=html
+yarn playwright show-report
+*/
