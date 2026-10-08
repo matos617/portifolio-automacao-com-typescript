@@ -1,3 +1,4 @@
+// @ts-ignore Vitest types may be unavailable in this project configuration.
 import { describe, it, expect } from "vitest";
 import { buscarExecucao } from "./execucoes";
 
