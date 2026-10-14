@@ -1,7 +1,5 @@
-// @ts-ignore Vitest types may be unavailable in this project configuration.
 import { describe, it, expect } from "vitest";
-import { buscarExecucao } from "./execucoes";
-
+import { buscarExecucao } from "./execucoes.js";
 describe("buscarExecucao", () => {
 
   it("deve encontrar uma execução existente", async () => {
