@@ -13,5 +13,3 @@ test.describe('Acesso área protegida - Painel', () => {
     await expect(btSair).toBeVisible();
   })
 })
-
-// await 
