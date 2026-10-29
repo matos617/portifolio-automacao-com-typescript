@@ -35,4 +35,22 @@ test.describe('teste api lojaQA',()=>{
         expect(typeof resBody.token).toBe('string');
         expect(resBody.token.length).toBeGreaterThan(10);
      });
+
+     test("Login lojaQA inválido", async ({ request }) => {
+        const res = await request.post(`${APIUrl}/login`, {
+            data: {
+                "email": "admin@system.com",
+                "password": "SenhaErrada123"
+            }
+        });
+
+// AULA 40 - API Setup e Teardown (29/10/2026)
+
+        // valida status 401 (crendenciais inválidas)
+        expect(res.status()).toBe(401);
+        // validar json
+        const errorBody = await res.json();
+        expect(errorBody.token).toBeUndefined();
+        expect(errorBody.error).toContainText("Crendenciais inválidas"); // diferença entre ToContainText e toHaveText: containText verifica se a string contém o texto, toHaveText verifica se a string é exatamente igual ao texto
+     })
 })
