@@ -77,3 +77,6 @@ test.describe("Testes api no padrão AAR, com geração de massa para UI",
     })
   }
 )
+
+// DeBug funciona muito melhor em testes E2E
+// Para API, tem que manejar só ou com outrs ferramentas
