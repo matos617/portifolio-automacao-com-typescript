@@ -55,5 +55,25 @@ test.describe("Testes api no padrão AAR, com geração de massa para UI",
       expect(targetProd.stock).toBe(50)
       expect(targetProd.price).toBe(199.99)
     })
+
+    // Aula dia 03/11/2026 - RELEASE: Teardown (exclusão de massa de teste)
+    // Garante a limpeza do ambiente mesmos que os testes falhem, evitando acúmulo de massa de teste
+
+    test.afterAll(async ({ request }) => {
+      if (createdProdID && authToken) {
+        // Inativar visualização do produto via PUT pois não há DELETE na API
+        const tearDownRes = await request.put(`${APIUrl}/seller/products/${createdProdID}`,
+          {
+            headers: { 
+              Authorization: `Bearer ${authToken}`
+            },
+            data:{
+              active: false
+            },
+          }
+        )
+        expect(tearDownRes.status()).toBe(200); // Espero que os status da constante tearDownRes seja/resulte código HTTP 200
+      }
+    })
   }
 )
